@@ -1,16 +1,13 @@
 import inputByLine from "../inputByLine.mjs";
 
 function safe(report) {
-  let incrementing = 1;
-  let decrementing = 1;
+  const sign = Math.sign(report[0] - report[1]);
 
   for (let i = 1; i < report.length; i++) {
     const diff = report[i - 1] - report[i];
 
-    if (diff < 0) {
-      incrementing++;
-    } else if (diff > 0) {
-      decrementing++;
+    if (Math.sign(diff) !== sign) {
+      return false;
     }
 
     const absDiff = Math.abs(diff);
@@ -20,7 +17,7 @@ function safe(report) {
     }
   }
 
-  return decrementing === report.length || incrementing === report.length;
+  return true;
 }
 
 let partOne = 0;

@@ -48,22 +48,18 @@ function partOne(word) {
 }
 
 function partTwo(word) {
-  let occurrences = 0;
   const reach = Math.floor(word.length / 2);
+
+  let occurrences = 0;
 
   for (let y = 0; y < wordGrid.length; y++) {
     for (let x = 0; x < wordGrid[y].length; x++) {
       const criss = collectWord([y - reach, x - reach], [1, 1], word.length);
       const cross = collectWord([y + reach, x - reach], [-1, 1], word.length);
 
-      const crissRegular = criss.join("");
-      const crossRegular = cross.join("");
-      const crissReverse = criss.toReversed().join("");
-      const crossReverse = cross.toReversed().join("");
-
       if (
-        (crissRegular === word || crissReverse === word) &&
-        (crossRegular === word || crossReverse === word)
+        (criss.join("") === word || criss.toReversed().join("") === word) &&
+        (cross.join("") === word || cross.toReversed().join("") === word)
       ) {
         occurrences++;
       }

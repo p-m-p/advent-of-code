@@ -1,5 +1,9 @@
 import inputByLine from "../inputByLine.mjs";
 
+function occurrences(item, items) {
+  return items.filter((i) => i === item).length;
+}
+
 const left = [];
 const right = [];
 
@@ -9,10 +13,6 @@ await inputByLine("input.txt", (line) => {
   left.push(parseInt(l, 10));
   right.push(parseInt(r, 10));
 });
-
-function occurrences(item, items) {
-  return items.filter((i) => i === item).length;
-}
 
 left.sort();
 right.sort();
