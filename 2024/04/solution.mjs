@@ -1,11 +1,4 @@
-#!/usr/bin/env node
-
-import { createReadStream } from "fs";
-import { createInterface } from "readline";
-
-const lineReader = createInterface({
-  input: createReadStream("input.txt"),
-});
+import inputByLine from "../inputByLine.mjs";
 
 function collectWord(start, move, count) {
   if (start[0] < 0 || start[1] < 0) {
@@ -82,11 +75,9 @@ function partTwo(word) {
 
 const wordGrid = [];
 
-lineReader.on("line", (line) => {
+await inputByLine("input.txt", (line) => {
   wordGrid.push(line.trim().split(""));
 });
 
-lineReader.on("close", () => {
-  console.log("Part one", partOne("XMAS"));
-  console.log("Part two", partTwo("MAS"));
-});
+console.log("Part one", partOne("XMAS"));
+console.log("Part two", partTwo("MAS"));

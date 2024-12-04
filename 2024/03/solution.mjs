@@ -1,9 +1,3 @@
-#!/usr/bin/env node
-
-import { readFile } from "fs/promises";
-
-const input = await readFile("input.txt", "utf8");
-
 function partOne(section) {
   return [...section.matchAll(/mul\((\d+),(\d+)\)/g)].reduce(
     (total, [, left, right]) => {
@@ -12,8 +6,6 @@ function partOne(section) {
     0,
   );
 }
-
-console.log("Part one", partOne(input));
 
 function partTwo(section) {
   let enabled = true;
@@ -34,4 +26,7 @@ function partTwo(section) {
   return total;
 }
 
+const input = await Deno.readTextFile("input.txt", "utf8");
+
+console.log("Part one", partOne(input));
 console.log("Part two", partTwo(input));

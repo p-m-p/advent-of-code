@@ -1,11 +1,4 @@
-#!/usr/bin/env node
-
-import { createReadStream } from "fs";
-import { createInterface } from "readline";
-
-const lineReader = createInterface({
-  input: createReadStream("input.txt"),
-});
+import inputByLine from "../inputByLine.mjs";
 
 function safe(report) {
   let incrementing = 1;
@@ -33,7 +26,7 @@ function safe(report) {
 let partOne = 0;
 let partTwo = 0;
 
-lineReader.on("line", (line) => {
+await inputByLine("input.txt", (line) => {
   const report = line
     .trim()
     .match(/\d+/g)
@@ -46,7 +39,5 @@ lineReader.on("line", (line) => {
   }
 });
 
-lineReader.on("close", () => {
-  console.log("Part one", partOne);
-  console.log("Part two", partOne + partTwo);
-});
+console.log("Part one", partOne);
+console.log("Part two", partOne + partTwo);
