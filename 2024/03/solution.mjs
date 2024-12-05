@@ -26,7 +26,8 @@ function partTwo(section) {
   return total;
 }
 
-const input = await Deno.readTextFile("input.txt", "utf8");
+export async function run({ input }) {
+  const text = await input();
 
-console.log("Part one", partOne(input));
-console.log("Part two", partTwo(input));
+  return [partOne(text), partTwo(text)];
+}

@@ -1,32 +1,28 @@
-import inputByLine from "../inputByLine.mjs";
-
 function occurrences(item, items) {
   return items.filter((i) => i === item).length;
 }
 
-const left = [];
-const right = [];
+export async function run({ inputByLine }) {
+  const left = [];
+  const right = [];
 
-await inputByLine("input.txt", (line) => {
-  const [l, r] = line.trim().split(/\s+/);
+  await inputByLine((line) => {
+    const [l, r] = line.trim().split(/\s+/);
 
-  left.push(parseInt(l, 10));
-  right.push(parseInt(r, 10));
-});
+    left.push(parseInt(l, 10));
+    right.push(parseInt(r, 10));
+  });
 
-left.sort();
-right.sort();
+  left.sort();
+  right.sort();
 
-console.log(
-  "Part one",
-  left.reduce((sum, location, i) => {
-    return sum + Math.abs(location - right[i]);
-  }, 0),
-);
+  return [
+    left.reduce((sum, location, i) => {
+      return sum + Math.abs(location - right[i]);
+    }, 0),
 
-console.log(
-  "Part two",
-  left.reduce((sum, location) => {
-    return sum + location * occurrences(location, right);
-  }, 0),
-);
+    left.reduce((sum, location) => {
+      return sum + location * occurrences(location, right);
+    }, 0),
+  ];
+}

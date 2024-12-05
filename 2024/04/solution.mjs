@@ -1,5 +1,3 @@
-import inputByLine from "../inputByLine.mjs";
-
 function collectWord(start, move, count) {
   if (start[0] < 0 || start[1] < 0) {
     return [""];
@@ -71,9 +69,10 @@ function partTwo(word) {
 
 const wordGrid = [];
 
-await inputByLine("input.txt", (line) => {
-  wordGrid.push(line.trim().split(""));
-});
+export async function run({ inputByLine }) {
+  await inputByLine((line) => {
+    wordGrid.push(line.trim().split(""));
+  });
 
-console.log("Part one", partOne("XMAS"));
-console.log("Part two", partTwo("MAS"));
+  return [partOne("XMAS"), partTwo("MAS")];
+}
