@@ -11,9 +11,11 @@ function partTwo(section) {
   let enabled = true;
   let total = 0;
 
-  for (const [match, left, right] of section.matchAll(
-    /do\(\)|don't\(\)|mul\((\d+),(\d+)\)/g,
-  )) {
+  for (
+    const [match, left, right] of section.matchAll(
+      /do\(\)|don't\(\)|mul\((\d+),(\d+)\)/g,
+    )
+  ) {
     if (match === "don't()") {
       enabled = false;
     } else if (match === "do()") {
