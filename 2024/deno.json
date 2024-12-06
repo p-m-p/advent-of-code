@@ -1,5 +1,5 @@
 {
   "tasks": {
-    "run": "deno --allow-read run.mjs"
+    "day": "deno --allow-read run.mjs"
   }
 }
