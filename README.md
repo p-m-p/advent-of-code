@@ -1,4 +1,4 @@
-## Advent of code 2024 solutions
+## Advent of code solutions
 
 See here the [Advent of code website](https://adventofcode.com/) for details.
 
