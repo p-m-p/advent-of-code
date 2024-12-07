@@ -5,13 +5,16 @@ function isCalibrated(total, numbers, operators) {
     const num = numbers[i];
     const level = tree[i - 1];
     const results = [];
+    const isLastNumber = i === numbers.length - 1;
 
     for (let j = 0; j < level.length; j++) {
-      results.push(...operators.map((op) => op(level[j], num)));
-    }
+      const nodeResults = operators.map((op) => op(level[j], num));
 
-    if (i === numbers.length - 1 && results.includes(total)) {
-      return true;
+      if (isLastNumber && nodeResults.includes(total)) {
+        return true;
+      }
+
+      results.push(...nodeResults);
     }
 
     tree.push(results);
