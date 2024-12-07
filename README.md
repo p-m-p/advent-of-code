@@ -1,6 +1,6 @@
 ## Advent of code solutions
 
-See here the [Advent of code website](https://adventofcode.com/) for details.
+See the [Advent of code website](https://adventofcode.com/).
 
 ### Years
 
